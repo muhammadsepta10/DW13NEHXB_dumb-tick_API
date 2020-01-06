@@ -14,6 +14,12 @@ module.exports = (sequelize, DataTypes) => {
   user.associate = function(models) {
     user.hasMany(models.events, {
       foreignKey: "createdBy"
+    }),
+      user.hasMany(models.order, {
+        foreignKey: "customer"
+      });
+    user.hasMany(models.favorite, {
+      foreignKey: "user"
     });
   };
   return user;

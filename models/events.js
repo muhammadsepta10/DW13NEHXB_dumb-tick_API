@@ -20,7 +20,13 @@ module.exports = (sequelize, DataTypes) => {
       events.belongsTo(models.user, {
         foreignKey: "createdBy",
         as: "User"
+      }),
+      events.hasMany(models.order, {
+        foreignKey: "event"
       });
+    events.hasMany(models.favorite, {
+      foreignKey: "event"
+    });
   };
   return events;
 };
